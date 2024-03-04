@@ -51,9 +51,8 @@ android {
 }
 
 dependencies {
-    implementation("androidx.room:room-compiler:2.6.1")
     implementation("com.google.firebase:firebase-crashlytics-buildtools:2.9.9")
-    implementation("org.testng:testng:6.9.6")
+    implementation("org.testng:testng:7.9.0")
     implementation("androidx.navigation:navigation-compose:2.7.7")
     // Test rules and transitive dependencies:
 
