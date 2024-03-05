@@ -8,9 +8,7 @@ import androidx.compose.ui.test.hasTextExactly
 import androidx.compose.ui.test.junit4.ComposeTestRule
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
-import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
-import androidx.compose.ui.test.printToLog
 import androidx.navigation.compose.rememberNavController
 import melvin.gerritsen.myrecipeapp.ui.theme.MyRecipeAppTheme
 import org.junit.Rule
@@ -39,9 +37,7 @@ class MyComposeTest {
             composeTestRule.onNodeWithText("Beef").assertIsDisplayed()
             composeTestRule.onNodeWithText("Beef").assertHasClickAction().performClick()
 //            composeTestRule.temp_wait_function()
-            composeTestRule.onRoot().printToLog("Hanna")
             composeTestRule.waitUntilExactlyOneExists(hasText("meat", true))
-
             composeTestRule.onNodeWithText("meat", true).assertIsDisplayed()
 
 
