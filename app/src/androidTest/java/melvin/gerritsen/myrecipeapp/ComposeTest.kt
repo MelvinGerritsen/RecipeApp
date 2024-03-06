@@ -1,11 +1,10 @@
 package melvin.gerritsen.myrecipeapp
 
 import androidx.compose.ui.test.ExperimentalTestApi
-import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.hasTextExactly
-import androidx.compose.ui.test.junit4.ComposeTestRule
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
@@ -14,8 +13,6 @@ import melvin.gerritsen.myrecipeapp.ui.theme.MyRecipeAppTheme
 import org.junit.Rule
 import org.junit.Test
 
-
-// file: app/src/androidTest/java/com/package/MyComposeTest.kt
 
 class MyComposeTest {
 
@@ -33,20 +30,24 @@ class MyComposeTest {
         }
 
 //            composeTestRule.temp_wait_function()
-            composeTestRule.waitUntilExactlyOneExists(hasTextExactly("Beef"))
-            composeTestRule.onNodeWithText("Beef").assertIsDisplayed()
-            composeTestRule.onNodeWithText("Beef").assertHasClickAction().performClick()
+//        composeTestRule
+//            .onAllNodesWithContentDescription("Beef").assertAny(hasTestTag("Beef"))
+        composeTestRule.waitUntilExactlyOneExists(hasTextExactly("Beef"))
+        composeTestRule.onNodeWithText("Beef").assertIsDisplayed()
+        composeTestRule.onNode(hasTestTag(Test_Tag_Front_Screen) and hasText("Beef"))
+            .performClick()
 //            composeTestRule.temp_wait_function()
-            composeTestRule.waitUntilExactlyOneExists(hasText("meat", true))
-            composeTestRule.onNodeWithText("meat", true).assertIsDisplayed()
+        composeTestRule.waitUntilExactlyOneExists(hasText("meat", true))
+        composeTestRule.onNodeWithText("meat", true).assertIsDisplayed()
 
 
     }
 }
 
-private fun ComposeTestRule.temp_wait_function(duration: Long = 50_000) {
-    waitUntil(duration) { true == false }
-}
+
+//private fun ComposeTestRule.temp_wait_function(duration: Long = 50_000) {
+//    waitUntil(duration) { true == false }
+//}
 
 
 
