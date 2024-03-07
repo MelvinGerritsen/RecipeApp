@@ -13,7 +13,7 @@ import melvin.gerritsen.myrecipeapp.ui.theme.MyRecipeAppTheme
 import org.junit.Rule
 import org.junit.Test
 
-
+//make some changes feature_branche_2 github
 class MyComposeTest {
 
     @get:Rule
