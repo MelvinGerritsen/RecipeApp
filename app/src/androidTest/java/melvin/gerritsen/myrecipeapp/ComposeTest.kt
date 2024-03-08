@@ -14,6 +14,7 @@ import org.junit.Rule
 import org.junit.Test
 
 //make some changes feature_branche_2 github
+//make a new branch in NS language
 class MyComposeTest {
 
     @get:Rule
