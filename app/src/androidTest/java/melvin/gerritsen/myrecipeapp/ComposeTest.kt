@@ -43,6 +43,27 @@ class MyComposeTest {
 
 
     }
+
+    @OptIn(ExperimentalTestApi::class)
+    @Test
+    fun my_second_recipe_test() {
+        composeTestRule.setContent {
+            val navController = rememberNavController()
+            MyRecipeAppTheme {
+                RecipeApp(navController = navController)
+            }
+        }
+        composeTestRule.performScrollToKey()
+        composeTestRule.waitUntilExactlyOneExists(hasTextExactly("Breakfast"))
+        composeTestRule.onNodeWithText("Breakfast").assertIsDisplayed()
+        composeTestRule.onNode(hasTestTag(Test_Tag_Front_Screen) and hasText("Breakfast"))
+            .performClick()
+//            composeTestRule.temp_wait_function()
+        composeTestRule.waitUntilExactlyOneExists(hasText("meat", true))
+        composeTestRule.onNodeWithText("meat", true).assertIsDisplayed()
+
+
+    }
 }
 
 
