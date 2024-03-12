@@ -1,5 +1,6 @@
 package melvin.gerritsen.myrecipeapp
 
+import android.util.Log
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasTestTag
@@ -8,8 +9,10 @@ import androidx.compose.ui.test.hasTextExactly
 import androidx.compose.ui.test.junit4.ComposeTestRule
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
+import androidx.compose.ui.test.printToLog
 import androidx.navigation.compose.rememberNavController
 import melvin.gerritsen.myrecipeapp.ui.theme.MyRecipeAppTheme
 import org.junit.Rule
@@ -56,7 +59,11 @@ class MyComposeTest {
 //            composeTestRule.temp_wait_function()
 //        composeTestRule
 //            .onAllNodesWithContentDescription("Beef").assertAny(hasTestTag("Beef"))
+            composeTestRule.waitUntilExactlyOneExists(hasTextExactly("Beef"))
+            composeTestRule.onRoot().printToLog("Hanna")
             composeTestRule.onNodeWithText("Breakfast").performScrollTo()
+            //lazy column
+            composeTestRule.onRoot().printToLog("Hanna2")
             composeTestRule.waitUntilExactlyOneExists(hasTextExactly("Breakfast"))
             composeTestRule.onNodeWithText("Breakfast").assertIsDisplayed()
             composeTestRule.onNode(hasTestTag(Test_Tag_Front_Screen) and hasText("Breakfast"))
@@ -69,9 +76,9 @@ class MyComposeTest {
 }
 
 
-private fun ComposeTestRule.temp_wait_function(duration: Long = 50_000) {
-  waitUntil(duration) { true == false }
-}
+//private fun ComposeTestRule.temp_wait_function(duration: Long = 50_000) {
+//  waitUntil(duration) { true == false }
+//}
 
 
 
