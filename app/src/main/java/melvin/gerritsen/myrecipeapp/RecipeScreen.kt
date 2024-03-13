@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 
 const val Test_Tag_Front_Screen="recipe_app_front_screen_button"
+const val Test_Tag_LazyVerticalGrid="recipe_app_LazyVerticalGrid"
 
 @Composable
 fun RecipeScreen(modifier: Modifier = Modifier,
@@ -50,7 +51,7 @@ fun RecipeScreen(modifier: Modifier = Modifier,
 fun CategoryScreen (categories: List<Category>,
                     navigateToDetail: (Category) -> Unit
 ){
-    LazyVerticalGrid(GridCells.Fixed(2), modifier = Modifier.fillMaxSize()){
+    LazyVerticalGrid(GridCells.Fixed(2), modifier = Modifier.fillMaxSize().testTag(Test_Tag_LazyVerticalGrid)){
         items(categories){
             category ->
             CategoryItem(category = category, navigateToDetail)
